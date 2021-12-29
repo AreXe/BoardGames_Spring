@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface BoardGameRepository extends JpaRepository<BoardGame, Integer> {
 
-    @Query(value = "SELECT * FROM board_game b WHERE b.title LIKE %:title%", nativeQuery = true)
+    @Query(value = "SELECT * FROM board_game b WHERE lower(b.title) LIKE %:title%", nativeQuery = true)
     List<BoardGame> findBoardGamesByTitle(String title);
 }

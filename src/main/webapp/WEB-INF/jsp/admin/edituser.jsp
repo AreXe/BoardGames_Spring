@@ -66,7 +66,7 @@
                 </div>
             </sf:form>
 
-            <sf:form id="usersForm" action="${pageContext.request.contextPath}/admin/deleteuser/${user.id}" modelAttribute="user" enctype="multipart/form-data" method="POST">
+            <sf:form id="usersForm" action="${pageContext.request.contextPath}/admin/deleteuser/${user.id}" modelAttribute="user" enctype="multipart/form-data" method="DELETE">
             <sf:hidden path="id" value="${user.id}"/>
             <div class="text-center my-2">
                 <button class="btn btn-danger" type="submit" onclick="return confirm('Delete this user?')">Delete</button>
