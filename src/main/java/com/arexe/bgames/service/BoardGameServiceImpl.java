@@ -34,7 +34,7 @@ public class BoardGameServiceImpl implements BoardGameService {
 
     @Override
     public List<BoardGame> findBoardGamesByTitle(String title) {
-        return boardGameRepository.findBoardGamesByTitle(title);
+        return boardGameRepository.findBoardGamesByTitle(title.toLowerCase());
     }
 
     @Override

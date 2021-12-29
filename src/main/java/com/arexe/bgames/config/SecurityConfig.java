@@ -56,16 +56,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/activate/**").permitAll()
                 .antMatchers("/password-reset/**", "/password-reset-proceed").permitAll()
                 .antMatchers("/donate**").permitAll()
-                .antMatchers("/boardgame/**").permitAll()
-                .antMatchers("/boardgame/search/**").permitAll()
+                .antMatchers("/boardgame/search/**","/boardgame/**").permitAll()
                 .antMatchers("/soap/**", "/ws/**", "/ws-info").permitAll()
                 .antMatchers("/error").permitAll()
+                .antMatchers("/api/rest-api/**", "/api/rest-api.html", "/api/swagger-ui/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/boardgames").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/boardgames/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/boardgames/id/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/boardgames").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/api/boardgames/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/api/boardgames/**").hasRole("ADMIN")
+                .antMatchers("/management/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and().csrf().disable()
                 .formLogin()
@@ -82,7 +83,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity webSec) {
         webSec.ignoring()
                 .antMatchers("/resources/**", "/statics/**", "/css/**", "/js/**", "/images/**", "/incl/**")
-                .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/**", "/api/swagger-ui.html", "/webjars/**");
+                .antMatchers("/api/rest-api/**", "/api/swagger-ui/**");
     }
 
 }
