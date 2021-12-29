@@ -1,5 +1,5 @@
 # BoardGames_Spring
-[![Build Status](https://travis-ci.com/AreXe/BoardGames_Spring.svg?branch=develop)](https://travis-ci.com/AreXe/BoardGames_Spring)
+![CI with Maven](https://github.com/AreXe/BoardGames_Spring/actions/workflows/maven.yml/badge.svg)
 
 "Senet Board Games" application that provides a possibility for their users to explore, like and share their favourite board games. Project made using Spring technology stack, along with REST API and Bootstrap interface.<br/>
 Functionality includes i.a. registering new account, signing in system, updating account info with changing the password, admin panel to control user accounts and board games (CRUD), exploring and sharing board games.
@@ -9,7 +9,7 @@ Functionality includes i.a. registering new account, signing in system, updating
 * Web: Bootstrap
 * Database: PostgreSQL 13+, Flyway
 * Tests: JUnit Jupiter
-* CI: Travis
+* CI: GitHub Actions (CI with Maven)
 
 ## Live demo
 Application is available @ Heroku:
