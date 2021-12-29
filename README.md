@@ -56,3 +56,7 @@ Application properties are available under the file `application.properties` whi
 Login to admin account using:
 * E-mail: admin@gmail.com
 * Password: admin
+
+## Spring Boot Actuator
+To access additional features to monitor and manage application open `/management` path.
+By default, available endpoints exposed with Actuator are: info, health and metrics.
