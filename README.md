@@ -7,7 +7,7 @@ Functionality includes i.a. registering new account, signing in system, updating
 ### Stack of technologies
 * Spring: Boot, Framework (MVC, DI), Data (Hibernate), Security
 * Web: Bootstrap
-* Database: PostgreSQL 13+
+* Database: PostgreSQL 13+, Flyway
 * Tests: JUnit Jupiter
 * CI: Travis
 
@@ -53,6 +53,8 @@ SPRING_DATASOURCE_URL - JDBC address to database
 SPRING_DATASOURCE_USERNAME - databse username
 SPRING_DATASOURCE_PASSWORD - database password
 ```
+Project also includes Flyway migration scripts to create baseline schema.
+
 To start the application you can use the command from Spring Boot Maven Plugin:
 ```
 mvn spring-boot:run
