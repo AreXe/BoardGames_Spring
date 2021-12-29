@@ -15,18 +15,18 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     User findUserByLogin(String login);
 
     @Modifying
-    @Query("UPDATE User u SET u.password=:newPassword WHERE u.email=:email")
+    @Query("UPDATE User SET password=:newPassword WHERE email=:email")
     void updateUserPassword(@Param("newPassword") String newPassword, @Param("email") String email);
 
     @Modifying
-    @Query("UPDATE User u SET u.login=:login, u.firstName=:firstName, u.lastName=:lastName WHERE u.email=:email")
+    @Query("UPDATE User SET login=:login, firstName=:firstName, lastName=:lastName WHERE email=:email")
     void updateUserProfile(@Param("login") String login, @Param("firstName") String firstName, @Param("lastName") String lastName, @Param("email") String email);
 
     @Modifying
-    @Query("UPDATE User u SET u.imagePath=:imagePath WHERE u.email=:email")
+    @Query("UPDATE User SET imagePath=:imagePath WHERE email=:email")
     void updateUserImage(@Param("imagePath") String imagePath, @Param("email") String email);
 
     @Modifying
-    @Query("UPDATE User u SET u.active=:active WHERE u.activationToken=:activationToken AND u.id=:id")
+    @Query("UPDATE User SET active=:active WHERE activationToken=:activationToken AND id=:id")
     void updateActiveStatus(@Param("id") int id, @Param("active") int active, @Param("activationToken") String activationToken);
 }

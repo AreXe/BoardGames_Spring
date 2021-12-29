@@ -7,6 +7,7 @@ Functionality includes i.a. registering new account, signing in system, updating
 ### Stack of technologies
 * Spring: Boot, Framework (MVC, DI), Data (Hibernate), Security
 * Web: Bootstrap
+* Database: PostgreSQL 13+
 * Tests: JUnit Jupiter
 * CI: Travis
 
@@ -46,12 +47,16 @@ Example SOAP message:
 ```
 
 ## How to run the application
-The project includes Spring Boot Maven Plugin, so using this command will build and run the application:
+Before starting the application check default configuration available in the `application.properties` file and provide the non-default settings for PostgreSQL database, that can be overridden by environment variables:
+```
+SPRING_DATASOURCE_URL - JDBC address to database
+SPRING_DATASOURCE_USERNAME - databse username
+SPRING_DATASOURCE_PASSWORD - database password
+```
+To start the application you can use the command from Spring Boot Maven Plugin:
 ```
 mvn spring-boot:run
 ```
-Application properties are available under the file `application.properties` which is needed to change the credentials and host of provided database.
-
 ### Credentials
 Login to admin account using:
 * E-mail: admin@gmail.com

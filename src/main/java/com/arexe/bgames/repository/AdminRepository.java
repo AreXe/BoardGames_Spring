@@ -16,19 +16,19 @@ public interface AdminRepository extends JpaRepository<User, Integer> {
 
     User findUserById(int id);
 
-    @Query(value = "SELECT * FROM user u WHERE u.email LIKE %:name% OR u.login LIKE %:name%", nativeQuery = true)
+    @Query(value = "SELECT * FROM app_user u WHERE u.email LIKE %:name% OR u.login LIKE %:name%", nativeQuery = true)
     List<User> findUsersByName(@Param("name") String name);
 
-    @Query(value = "SELECT * FROM user u WHERE u.email LIKE %:name% OR u.login LIKE %:name%",
-            countQuery = "SELECT count(*) FROM user u WHERE u.email LIKE %:name% OR u.login LIKE %:name%", nativeQuery = true)
+    @Query(value = "SELECT * FROM app_user u WHERE u.email LIKE %:name% OR u.login LIKE %:name%",
+            countQuery = "SELECT count(*) FROM app_user u WHERE u.email LIKE %:name% OR u.login LIKE %:name%", nativeQuery = true)
     Page<User> findUsersByNamePageable(String name, Pageable pageable);
 
     @Modifying
-    @Query("UPDATE User u SET u.active=:active WHERE u.id=:id")
+    @Query("UPDATE User SET active=:active WHERE id=:id")
     void updateUserActivation(@Param("id") int id, @Param("active") int active);
 
     @Modifying
-    @Query(value = "UPDATE user_role r SET r.role_id=:roleNumber WHERE r.user_id=:id", nativeQuery = true)
+    @Query(value = "UPDATE user_role SET role_id=:roleNumber WHERE user_id=:id", nativeQuery = true)
     void updateUserRole(@Param("id") int id, @Param("roleNumber") int roleNumber);
 
     @Modifying
@@ -36,6 +36,6 @@ public interface AdminRepository extends JpaRepository<User, Integer> {
     void deleteUserByIdFromUserRoleTable(@Param("id") int id);
 
     @Modifying
-    @Query(value = "DELETE FROM user WHERE user_id=:id", nativeQuery = true)
+    @Query(value = "DELETE FROM app_user WHERE user_id=:id", nativeQuery = true)
     void deleteUserByIdFromUserTable(@Param("id") int id);
 }
