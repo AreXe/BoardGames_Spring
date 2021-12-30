@@ -13,3 +13,6 @@ $(".input-password").click(function () {
         input.attr("type", "password");
     }
 });
+
+//Current year
+document.getElementById("currentYear").innerHTML = new Date().getFullYear();
