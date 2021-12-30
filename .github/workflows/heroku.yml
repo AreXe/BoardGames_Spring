@@ -1,0 +1,29 @@
+name: Heroku Deployment
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+        env:
+          SPRING_DATASOURCE_URL: ${{secrets.PG_DATABASE_URL}}
+          SPRING_DATASOURCE_USERNAME: ${{secrets.PG_DATABASE_USERNAME}}
+          SPRING_DATASOURCE_PASSWORD: ${{secrets.PG_DATABASE_PASSWORD}}
+          SPRING_MAIL_USERNAME: ${{secrets.MAIL_USERNAME}}
+          SPRING_MAIL_PASSWORD: ${{secrets.MAIL_PASSWORD}}
+          PAYU_CLIENTID: ${{secrets.PAYU_CLIENTID}}
+          PAYU_CLIENTSECRET: ${{secrets.PAYU_CLIENTSECRET}}
